@@ -1,0 +1,157 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.jz {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+body {
+	background-color: #f3f5f7;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	min-width: 1300px;
+}
+
+.left {
+	width: 7%;
+	background-color: #04122B;
+	height: 1000px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.dh {
+	height: 85%;
+	width: 100%;
+	padding-top: 170px;
+}
+
+.dh .first {
+	text-align: center;
+	width: 100%;
+	height: 78px;
+	cursor: pointer;
+	padding-top: 30px;
+}
+
+.dh .first:hover {
+	background-color: #0D3160;
+}
+
+.dh .first:hover span {
+	color: white;
+}
+
+.dh .first:hover img {
+	opacity: 1;
+}
+
+.dh img {
+	width: 30px;
+	height: 28px;
+	opacity: 0.3;
+}
+
+.dh span {
+	color: #505A6B;
+	font-size: 14px;
+}
+
+.quit {
+	height: 15%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.quit .img {
+	width: 42px;
+	height: 42px;
+	border: 1px solid;
+	border-radius: 21px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.quit .img img {
+	height: 42px;
+	width: 42px;
+	border-radius: 21px;
+}
+
+.quit .tuichu {
+	font-size: 16px;
+	margin-top: 10px;
+	color: #6F4928;
+	cursor: pointer;
+}
+
+.quit .tuichu:hover {
+	color: white;
+}
+
+.right {
+	width: 93%;
+	background-color: #F3F5F7;
+	height: 1000px;
+}
+
+.right .top {
+	background-color: white;
+	height: 15.5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.right .content {
+	height: 84.5%;
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+}
+
+.right .choose {
+	width: 258px;
+	height: 42px;
+	margin-top: 280px;
+	margin-bottom: 75px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.right .choose span {
+	font-size: 14px;
+}
+
+.right .choose select {
+	width: 180px;
+	height: 42px;
+	cursor: pointer;
+}
+
+.right .buttontable {
+	width: 258px;
+	height: 42px;
+	border-radius: 8px;
+	background-color: #2379D9;
+	color: white;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.right .buttontable:hover {
+	background-color: #F39822;
+}

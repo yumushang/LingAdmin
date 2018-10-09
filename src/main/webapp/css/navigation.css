@@ -1,0 +1,134 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.jz {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+body {
+	min-width: 1500px;
+	min-height: 700px;
+}
+
+#web_bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	min-width: 1000px;
+	z-index: -10;
+	zoom: 1;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-position: center 0;
+}
+
+#web {
+	display: flex;
+	justify-content: center;
+}
+
+.dhl {
+	min-width: 1000px;
+	width: 78%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.zi {
+	font-size: 48px;
+	color: #e1332c;
+	letter-spacing: 10px;
+	width: 232px;
+	height: 50px;
+	margin-top: 100px;
+	margin-bottom: 120px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fordh {
+	height: 410px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fordh .one {
+	background-color: white;
+	height: 100%;
+	width: 366px;
+	padding-left: 50px;
+	padding-right: 30px;
+	display: flex;
+	cursor: pointer;
+	border-right: 1px solid #eaeaea;
+}
+
+.fordh .one:hover {
+	background-color: #2379d9;
+}
+
+.fordh .one:hover li, .fordh .one:hover a {
+	color: white;
+}
+
+.fordh .one:hover img {
+	opacity: 0.4;
+}
+
+.fordh .one .left {
+	width: 165px;
+	height: 100%;
+}
+
+.fordh .one .right {
+	width: 120px;
+	height: 100%;
+	display: flex;
+	align-items: flex-end;
+}
+
+.fordh .one .right img {
+	margin-bottom: 30px;
+	width: 103px;
+	height: 110px;
+}
+
+.left .ti {
+	margin-top: 40px;
+	margin-bottom: 20px;
+	font-size: 38px;
+	opacity: 0.3;
+}
+
+.left .xian {
+	width: 96px;
+	height: 2px;
+	margin-bottom: 60px;
+	background-color: #cecece;
+}
+
+.left .lis {
+	margin-left: 20px;
+}
+
+.left .lis li {
+	margin-bottom: 25px;
+}
+
+.left .lis a {
+	text-decoration: none;
+	color: black;
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="shortcut icon" href="${Session.BASE_URL}img/favicon.ico"
+	type="image/x-icon">
+<title>LingAdmin</title>
+<style>
+
+    .sysname {
+        font-size: 40px;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-put;
+        font-weight: 200;
+        font-family: 'Source Sans Pro', sans-serif;
+        color: white;
+        padding: 10px 0px 0px 10px;
+    }
+
+</style>
+
+<#include "temple/head.ftl">
+<script>
+    (window.top === window.self) || (window.top.location.href = window.self.location.href);
+</script>
+</head>
+<body class="layui-layout-body layui-unselect">
+	<style id="adminTheme"></style>
+	<!--<div class="layui-layout layui-layout-admin">-->
+	<div class="layui-layout layui-layout-admin">
+		<!--顶部导航开始-->
+		<div class="header layui-header">
+			<!--<div class="layui-nav layui-layout-left">-->
+			<!--<img class="logo" src="${Session.BASE_URL}img/sys-logo.png" />-->
+            <h1 class="sysname">LingAdmin</h1>
+			<!--</div>-->
+			<ul class="menu-user layui-nav layui-layout-right">
+				<li class="layui-nav-item" lay-unselect><a id="changeTheme"
+					href="javascript:">切换配色</a></li>
+				<li class="layui-nav-item" lay-unselect><a href="javascript:;">
+						<!--<img src="http://t.cn/RCzsdCq" class="layui-nav-img"> -->
+						${user.username}
+				</a>
+					<dl class="layui-nav-child">
+						<!-- <dd><a>基本资料</a></dd>
+                    <dd><a>安全设置</a></dd> -->
+						<dd>
+							<a href="${Session.BASE_URL}">安全退出</a>
+						</dd>
+					</dl></li>
+				<!--<li class="layui-nav-item" lay-unselect><a lau-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a></li>-->
+			</ul>
+		</div>
+		<!--顶部导航结束-->
+
+		<!--侧边菜单开始-->
+		<div class="sidebar layui-side"
+			data-href="${Session.BASE_URL}/menu.json">
+			<div class="fold lau-side-fold">
+				<i class="layui-icon layui-icon-shrink-right"></i>
+			</div>
+			<div class="sidebar-menu layui-side-scroll">
+				<ul class="layui-nav layui-nav-tree">
+					<!--这里可以写菜单结构,也可以放空,使用异步加载-->
+				</ul>
+			</div>
+		</div>
+		<!--侧边菜单结束-->
+
+		<!--内容主体区域开始-->
+		<div class="main layui-body" data-type="" data-title="欢迎页"
+			data-icon="layui-icon-home"
+			data-href="${Session.BASE_URL}/html/console_bak.html"></div>
+		<!--内容主体区域结束-->
+	</div>
+
+</body>
+<#include "temple/bottom.ftl">
+<script>
+    layui.config({base: '${Session.BASE_URL}/lying/'}).extend({lau: 'lau/lau'}).use(['lau'], function () {
+        var lau = layui.lau,
+                layer = layui.layer,
+                $ = layui.$;
+
+        /* var user =  "${user}";
+        console.log(user) */
+        //监听事件,这个不一定要用lau-event,可以自己写
+        $(document).on('click', '[lau-event]', function () {
+            var _this = $(this);
+            switch (_this.attr('lau-event')) {
+                case 'about':
+                    $.get('/html/about.html', function (html) {
+                        lau.drawer({content: html});
+                    });
+                    break;
+                case 'download':
+                    layer.confirm('下载的源码仅供学习使用，如需用于正式项目，请购买授权！', function (index) {
+                        window.open('https://github.com/carolkey/lying-admin/');
+                        layer.close(index1);
+                    });
+                    break;
+                case "sideMenu0":
+                    lau.sideMenuChange(0);
+                    break;
+                case "sideMenu1":
+                    lau.sideMenuChange(1);
+                    break;
+            }
+        });
+
+    });
+
+    /*获取主题名字*/
+    if(!localStorage.getItem('themeNumber')) {localStorage.setItem('themeNumber',0);}
+    var tcn = localStorage.getItem('themeNumber');
+    //主题颜色数据
+    var themeDate = [
+        '/*0号 默认*/\n' +
+        '.header {background-color: #20222a;}\n' +
+        '.header {border-bottom: 1px solid #0c0d0f;}\n' +
+        '.sidebar[class] {background-color: #20222a;}\n' +
+        '.sidebar[class] {border-right: 1px solid #2a2f32;}\n' +
+        '.fold{border-bottom: 1px solid #0c0d0f;}\n' +
+        '.sidebar-menu ul{background-color: #373940;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child {background-color: #16181d;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child dd .lau-nav-child {background-color: #0c0d0f;}\n' +
+        '.sidebar .nav-select{background-color: #009688;}\n' +
+        '.sidebar[class] .layui-nav-bar,.menu-user .layui-nav-bar{background-color: rgba(255,255,255,.5);}\n' +
+        '.layui-tab-brief > .layui-tab-title .layui-this{color: #009688;}\n' +
+        '.layui-body .layui-tab-title li:after{border-color: #009688!important;}'
+,
+        '/*1号 深蓝*/\n' +
+        '.header {background-color: #03152a!important;}\n' +
+        '.header {border-bottom: 1px solid #020f1d;}\n' +
+        '.sidebar[class] {background-color: #03152a;}\n' +
+        '.sidebar[class] {border-right: 1px solid #020f1d;}\n' +
+        '.fold{border-bottom: 1px solid #020f1d;}\n' +
+        '.sidebar-menu ul{background-color: #03152a;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child {background-color: #020f1d;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child dd .lau-nav-child {background-color: #010b14;}\n' +
+        '.sidebar .nav-select{background-color: #3b91ff;}\n' +
+        '.sidebar[class] .layui-nav-bar,.menu-user .layui-nav-bar{background-color: rgba(255,255,255,.5);}\n' +
+        '.layui-tab-brief > .layui-tab-title .layui-this{color: #124580;}\n' +
+        '.layui-body .layui-tab-title li:after{border-color: #124580!important;}'
+,
+        '/*2号 深紫*/\n' +
+        '.header {background-color: #50314f!important;}\n' +
+        '.header {border-bottom: 1px solid #472c46;}\n' +
+        '.sidebar[class] {background-color: #50314f;}\n' +
+        '.sidebar[class] {border-right: 1px solid #472c46;}\n' +
+        '.fold{border-bottom: 1px solid #472c46;}\n' +
+        '.sidebar-menu ul{background-color: #50314f;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child {background-color: #382237;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child dd .lau-nav-child {background-color: #211420;}\n' +
+        '.sidebar .nav-select{background-color: #7a4d7b;}\n' +
+        '.sidebar[class] .layui-nav-bar,.menu-user .layui-nav-bar{background-color: rgba(255,255,255,.5);}\n' +
+        '.layui-tab-brief > .layui-tab-title .layui-this{color: #7a4d7b;}\n' +
+        '.layui-body .layui-tab-title li:after{border-color: #7a4d7b!important;}'
+,
+        '/*3号 深红*/\n' +
+        '.header {background-color: #992c2b!important;}\n' +
+        '.header {border-bottom: 1px solid #992c2b;}\n' +
+        '.sidebar[class] {background-color: #242e38;}\n' +
+        '.sidebar[class] {border-right: 1px solid #242e38;}\n' +
+        '.fold{border-bottom: 1px solid #242e38;}\n' +
+        '.sidebar-menu ul{background-color: #242e38;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child {background-color: #192027;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child dd .lau-nav-child {background-color: #10151a;}\n' +
+        '.sidebar .nav-select{background-color: #992c2b;}\n' +
+        '.sidebar[class] .layui-nav-bar,.menu-user .layui-nav-bar{background-color: rgba(255,255,255,.5);}\n' +
+        '.layui-tab-brief > .layui-tab-title .layui-this{color: #9e1f24;}\n' +
+        '.layui-body .layui-tab-title li:after{border-color: #9e1f24!important;}'
+,
+        '/*4号 亮蓝*/\n' +
+        '.header {background-color: #0078d1!important;}\n' +
+        '.header {border-bottom: 1px solid #0c0d0f;}\n' +
+        '.sidebar[class] {background-color: #344058;}\n' +
+        '.sidebar[class] {border-right: 1px solid #2a2f32;}\n' +
+        '.fold{border-bottom: 1px solid #2a2f32;}\n' +
+        '.sidebar-menu ul{background-color: #344058;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child {background-color: #2d384d;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child dd .lau-nav-child {background-color: #242d3d;}\n' +
+        '.sidebar .nav-select{background-color: #0078d1;}\n' +
+        '.sidebar[class] .layui-nav-bar,.menu-user .layui-nav-bar{background-color: rgba(255,255,255,.5);}\n' +
+        '.layui-tab-brief > .layui-tab-title .layui-this{color: #344058;}\n' +
+        '.layui-body .layui-tab-title li:after{border-color: #344058!important;}'
+,
+        '/*5号 浅绿*/\n' +
+        '.header {background-color: #009688!important;}\n' +
+        '.header {border-bottom: 1px solid #009688;}\n' +
+        '.sidebar[class] {background-color: #009688;}\n' +
+        '.sidebar[class] {border-right: 1px solid #009688;}\n' +
+        '.fold{border-bottom: 1px solid #009688;}\n' +
+        '.sidebar-menu ul{background-color: #009688;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child {background-color: #009688;}\n' +
+        '.layui-side .lau-nav-item .lau-nav-child dd .lau-nav-child {background-color: #009688;}\n' +
+        '.sidebar .nav-select{background-color: #00635a;}\n' +
+        '.sidebar[class] .layui-nav-bar,.menu-user .layui-nav-bar{background-color: rgba(255,255,255,.5);}\n' +
+        '.layui-tab-brief > .layui-tab-title .layui-this{color: #344058;}\n' +
+        '.layui-body .layui-tab-title li:after{border-color: #009688!important;}'
+    ];
+    var themeName = ['默认','深蓝','深紫','深红','亮蓝','浅绿'];
+
+    //渲染CSS样式函数
+    function changeTheme(index){
+        $('#adminTheme').html(themeDate[index]);
+    }
+
+    //执行渲染
+    changeTheme(tcn);
+
+    /*onclick事件
+    * 改变主题序号
+    * 运行渲染函数*/
+    $("#changeTheme").click(function(){
+        tcn<themeDate.length -1?tcn++:tcn=0;
+        changeTheme(tcn);
+        layer.msg('已切换配色 - ' + themeName[tcn]);
+        localStorage.setItem('themeNumber',tcn);
+    });
+</script>
+</html>

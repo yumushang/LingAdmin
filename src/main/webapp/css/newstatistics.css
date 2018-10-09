@@ -1,0 +1,176 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.jz {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+body {
+	background-color: #f3f5f7;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	min-width: 1300px;
+}
+
+.st_left {
+	width: 7%;
+	background-color: #04122B;
+	height: 1000px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.st_dh {
+	height: 85%;
+	width: 100%;
+	padding-top: 170px;
+}
+
+.st_dh .st_first {
+	text-align: center;
+	width: 100%;
+	height: 78px;
+	cursor: pointer;
+	padding-top: 30px;
+}
+
+.st_dh .st_first:hover {
+	background-color: #0D3160;
+}
+
+.st_dh .st_first:hover span {
+	color: white;
+}
+
+.st_dh .st_first:hover img {
+	opacity: 1;
+}
+
+.st_dh img {
+	width: 30px;
+	height: 28px;
+	opacity: 0.3;
+}
+
+.st_dh span {
+	color: #505A6B;
+	font-size: 14px;
+}
+
+.st_quit {
+	height: 15%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.st_quit .st_img {
+	width: 42px;
+	height: 42px;
+	border: 1px solid;
+	border-radius: 21px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.st_quit .st_img img {
+	height: 42px;
+	width: 42px;
+	border-radius: 21px;
+}
+
+.st_quit .st_tuichu {
+	font-size: 16px;
+	margin-top: 10px;
+	color: #6F4928;
+	cursor: pointer;
+}
+
+.st_quit .st_tuichu:hover {
+	color: white;
+}
+
+.st_right {
+	width: 93%;
+	background-color: #F3F5F7;
+	height: 1000px;
+}
+
+.st_right .st_top {
+	background-color: white;
+	height: 15.5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.st_right .st_content {
+	height: 84.5%;
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+}
+
+.st_right .st_choose1 {
+	width: 258px;
+	height: 42px;
+	margin-top: 280px;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.st_right .st_choose1 span {
+	font-size: 14px;
+}
+
+.st_right .st_choose1 select {
+	width: 180px;
+	height: 42px;
+	cursor: pointer;
+}
+
+.st_right .st_choose2 {
+	width: 258px;
+	height: 42px;
+	margin-bottom: 75px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.st_right .st_choose2 span {
+	font-size: 14px;
+}
+
+.st_right .st_choose2 select {
+	width: 180px;
+	height: 42px;
+	cursor: pointer;
+}
+
+.st_right .st_buttontable {
+	width: 258px;
+	height: 42px;
+	border-radius: 8px;
+	background-color: #2379D9;
+	color: white;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.st_right .st_buttontable:hover {
+	background-color: #F39822;
+}

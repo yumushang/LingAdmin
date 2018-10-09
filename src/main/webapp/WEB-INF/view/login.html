@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calm breeze login screen</title>
+    <link rel="stylesheet" type="text/css" href="${Session.BASE_URL}css/login.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="container">
+        <h1>LingAdmin</h1>
+        <form class="form">
+            <input type="text" id = "username" placeholder="Username">
+            <input type="password" id = "password" placeholder="Password">
+            <button type="submit" id="login-button">Login</button>
+        </form>
+    </div>
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script type="text/javascript" src="${Session.BASE_URL}js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="${Session.BASE_URL}js/layer/layer.js"></script>
+<script>
+    $("#login-button").click(function(event){
+        event.preventDefault();
+
+        $('form').fadeOut(500);
+        $('.wrapper').addClass('form-success');
+
+        var un = $("#username").val();
+        var pwd = $("#password").val();
+        // console.log(un);
+        // console.log(pwd);
+
+        if(un == '' || un == null){
+            layer.msg('请输入账号！');
+            $("#username").focus();
+        }else if (pwd == '' || pwd == null){
+            layer.msg('请输入密码！');
+            $("#password").focus();
+        }else{
+            //验证账号
+            $.ajax({
+                url : 'ajaxLogin',
+                type : 'POST',
+                dataType : 'JSON',
+                data : {
+                    account : un,
+                    password : pwd,
+                },
+                success : function(result) {
+                    if (result.code == "SUCCESS") {
+                        window.location.href = "${Session.BASE_URL}index.html";
+                    } else {
+                        layer.msg(result.msg);
+                        $('#username').val("");
+                        $('#password').val("");
+                        $('#username').focus();
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+</body>
+
+</html>
